@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Pizza Shop</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .admin-header button {
+            padding: 10px 20px;
+            background: #e31837;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .pizza-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: none;
+        }
+        .pizza-form.show {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .pizza-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .pizza-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .pizza-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .pizza-card .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .pizza-card .actions button {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .edit-btn {
+            background: #4CAF50;
+            color: white;
+        }
+        .delete-btn {
+            background: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <div>
+                <button onclick="togglePizzaForm()">Add New Pizza</button>
+                <button onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <form id="pizzaForm" class="pizza-form">
+            <h2>Add/Edit Pizza</h2>
+            <input type="hidden" id="editPizzaId">
+            <div class="form-group">
+                <label for="pizzaName">Name:</label>
+                <input type="text" id="pizzaName" required>
+            </div>
+            <div class="form-group">
+                <label for="pizzaDescription">Description:</label>
+                <textarea id="pizzaDescription" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="pizzaImage">Image URL:</label>
+                <input type="url" id="pizzaImage" required>
+            </div>
+            <div class="form-group">
+                <label>Prices:</label>
+                <input type="number" id="priceSmall" placeholder="Small" step="0.01" required>
+                <input type="number" id="priceMedium" placeholder="Medium" step="0.01" required>
+                <input type="number" id="priceLarge" placeholder="Large" step="0.01" required>
+            </div>
+            <div class="form-group">
+                <label for="pizzaType">Type:</label>
+                <select id="pizzaType" required>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="non-vegetarian">Non-Vegetarian</option>
+                </select>
+            </div>
+            <button type="submit">Save Pizza</button>
+        </form>
+
+        <div id="pizzaList" class="pizza-list">
+            <!-- Pizza cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html> 

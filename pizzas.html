@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Paradise - Our Pizzas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-pizza-slice"></i>
+                    Kris's Pizza
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="pizzas.html" class="active"><i class="fas fa-pizza-slice"></i> Пици</a></li>
+                    <li><a href="drinks.html"><i class="fas fa-glass-cheers"></i> Напитки</a></li>
+                    <li><a href="about.html"><i class="fas fa-book-open"></i> Нашата история</a></li>
+                    <li class="cart-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Кошница
+                            <span id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="auth-links">
+                        <div id="userMenu" class="user-menu">
+                            <span class="user-name" onclick="toggleUserDropdown(event)">
+                                <i class="fas fa-user"></i>
+                                <span id="userName"></span>
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                            <div class="user-dropdown">
+                                <a href="account.html">
+                                    <i class="fas fa-user-circle"></i> Account Details
+                                </a>
+                                <a href="#" onclick="logout(); return false;">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                        <div id="authButtons">
+                            <a href="login.html" class="login-link">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                            <a href="register.html" class="register-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="menu-section">
+            <h1>Нашите вкусни пици</h1>
+            <p class="menu-description">Всяка пица е ръчно изработена с любов и най-добрите съставки</p>
+            
+            <div class="filter-section">
+                <div class="filter-group">
+                    <h3>Тип:</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-type="all">Всички</button>
+                        <button class="filter-btn" data-type="vegetarian">Вегетариански</button>
+                        <button class="filter-btn" data-type="non-vegetarian">Месни</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3>Размер:</h3>
+                    <div class="filter-options">
+                        <button class="filter-btn active" data-size="all">Всички</button>
+                        <button class="filter-btn" data-size="small">Малка</button>
+                        <button class="filter-btn" data-size="medium">Средна</button>
+                        <button class="filter-btn" data-size="large">Голяма</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-grid" id="pizza-menu">
+                <!-- Пици ще бъдат добавени динамично -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <h2>Вашата кошница</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <p>Общо: $<span id="cart-total">0.00</span></p>
+            </div>
+            <button onclick="proceedToCheckout()" class="checkout-btn">Продължете към плащане</button>
+            <button onclick="closeCart()" class="close-btn">Затвори</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <h2>Плащане</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="firstName">Име:</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Фамилия:</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Адрес:</label>
+                    <textarea id="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Телефонен номер:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="preferences">Предпочитания/Специални инструкции:</label>
+                    <textarea id="preferences"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Поставете поръчка</button>
+                <button type="button" onclick="closeCheckout()" class="close-btn">Затвори</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Kris's Pizza. Всички права запазени.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

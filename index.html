@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Paradise - Home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .auth-links {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .auth-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .auth-links .login-link {
+            background: transparent;
+            border: 1px solid #fff;
+        }
+        .auth-links .register-link {
+            background: #e31837;
+        }
+        .auth-links a:hover {
+            background: #c41530;
+        }
+        .user-menu {
+            position: relative;
+            display: none;
+        }
+        .user-menu.logged-in {
+            display: block;
+        }
+        .user-name {
+            color: #fff;
+            cursor: pointer;
+        }
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: none;
+            z-index: 1000;
+        }
+        .user-dropdown.show {
+            display: block;
+        }
+        .user-dropdown a {
+            display: block;
+            padding: 10px 15px;
+            color: #333;
+            text-decoration: none;
+        }
+        .user-dropdown a:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-pizza-slice"></i>
+                    Kris's Pizza
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="pizzas.html"><i class="fas fa-pizza-slice"></i> Пици</a></li>
+                    <li><a href="drinks.html"><i class="fas fa-glass-cheers"></i> Напитки</a></li>
+                    <li><a href="about.html"><i class="fas fa-book-open"></i> Наша история</a></li>
+                    <li class="cart-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Кошница
+                            <span id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="auth-links">
+                        <div id="userMenu" class="user-menu">
+                            <span class="user-name" onclick="toggleUserDropdown(event)">
+                                <i class="fas fa-user"></i>
+                                <span id="userName"></span>
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                            <div class="user-dropdown">
+                                <a href="account.html">
+                                    <i class="fas fa-user-circle"></i> Account Details
+                                </a>
+                                <a href="#" onclick="logout(); return false;">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                        <div id="authButtons">
+                            <a href="login.html" class="login-link">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                            <a href="register.html" class="register-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Добре дошли в Kris's Pizza</h1>
+                <p>Опитайте същността на италианската пица</p>
+                <a href="pizzas.html" class="cta-button">Поръчай сега</a>
+            </div>
+        </section>
+
+        <!-- Special Promotions Section -->
+        <section class="promotions-section">
+            <h2>Промоции</h2>
+            <div class="promotions-grid">
+                <!-- Monday Special Deal -->
+                <div class="promotion-card monday-special">
+                    <div class="promotion-badge">
+                        <i class="fas fa-calendar"></i>
+                        <span>Всеки понеделник</span>
+                    </div>
+                    <div class="promotion-content">
+                        <h3>Специална оферта</h3>
+                        <div class="promotion-image-container">
+                            <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Three Pizzas Deal">
+                            <div class="promotion-overlay">
+                                <span class="promotion-label">Купете 2, Получете 1 Безплатно</span>
+                            </div>
+                        </div>
+                        <p class="promotion-description">Започнете вашият седмичен план с една прекрасна оферта! Поръчайте 2 пици и получете третата безплатно!</p>
+                        <ul class="promotion-details">
+                            <li><i class="fas fa-check"></i> Валидна всеки понеделник</li>
+                            <li><i class="fas fa-check"></i> Всички видове пици включени</li>
+                            <li><i class="fas fa-check"></i> Най-евтината пица е безплатна</li>
+                        </ul>
+                        <a href="pizzas.html" class="promo-button">Поръчай сега</a>
+                    </div>
+                </div>
+
+                <!-- Pizza & Drink Combo -->
+                <div class="promotion-card combo-deal">
+                    <div class="promotion-badge">
+                        <i class="fas fa-percentage"></i>
+                        <span>Топ оферта</span>
+                    </div>
+                    <div class="promotion-content">
+                        <h3>Промоция пица и напитка</h3>
+                        <div class="promotion-images">
+                            <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pizza">
+                            <i class="fas fa-plus combo-plus"></i>
+                            <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Drink">
+                        </div>
+                        <p class="promotion-description">Получете всяка голяма пица с напитка, на което пожелаете, на специална цена!</p>
+                        <div class="combo-price">
+                            <span class="original-price">$20.98</span>
+                            <span class="discounted-price">$16.99</span>
+                        </div>
+                        <ul class="promotion-details">
+                            <li><i class="fas fa-check"></i> Специална цена</li>
+                            <li><i class="fas fa-check"></i> Всички видове пици</li>
+                            <li><i class="fas fa-check"></i> Всички видове напитки</li>
+                        </ul>
+                        <a href="pizzas.html" class="promo-button">Получете тази оферта</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Items Section -->
+        <section class="featured-section">
+            <h2>Най-популярни пици</h2>
+            <div class="featured-grid">
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Margherita Pizza">
+                    <h3>Маргарита</h3>
+                    <p>Свежи томати, mozzarella, базил, и олио</p>
+                    <span class="price">$12.99</span>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Pepperoni Pizza">
+                    <h3>Пеперони</h3>
+                    <p>Класически пепърони, mozzarella и томат сос</p>
+                    <span class="price">$14.99</span>
+                </div>
+                <div class="featured-item">
+                    <img src="https://images.unsplash.com/photo-1571407970349-bc81e7e96d47?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Vegetarian Pizza">
+                    <h3>Вегетарианска</h3>
+                    <p>Цвекчета, гъби, луковица, маслини и томати</p>
+                    <span class="price">$13.99</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Special Offers Section -->
+        <section class="special-offers">
+            <h2>Специални оферти</h2>
+            <div class="offers-grid">
+                <div class="offer-card">
+                    <i class="fas fa-percentage"></i>
+                    <h3>Специална оферта за семейството</h3>
+                    <p>Получете 20% намаление на всяка 2 големи пици</p>
+                    <span class="offer-code">FAMILY20</span>
+                </div>
+                <div class="offer-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Специална оферта за празниците</h3>
+                    <p>15% намаление на всички напитки от 2 часа до 5 часа</p>
+                    <span class="offer-code">HAPPY15</span>
+                </div>
+                <div class="offer-card">
+                    <i class="fas fa-pizza-slice"></i>
+                    <h3>Специална оферта за студентите</h3>
+                    <p>10% намаление с валиден студентски идентификационен номер</p>
+                    <span class="offer-code">STUDENT10</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-us">
+            <h2>Защо да изберете Kris's Pizza?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>Бързи доставка</h3>
+                    <p>Горячи и свежи пици доставени на вашият вход в 30 минути или по-малко</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Свежи съставки</h3>
+                    <p>Използваме само най-добрите, локално-източни съставки</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-hand-holding-usd"></i>
+                    <h3>Най-добра стойност</h3>
+                    <p>Конкурентни цени за висококачествени пици</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-star"></i>
+                    <h3>Сървърване на клиента</h3>
+                    <p>100% гаранция за удовлетворение на всеки клиент</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials">
+            <h2>Какво казват нашите клиенти</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Най-добрата пица, която съм яла! Пицата е перфектна и съставките са свежи."</p>
+                    <cite>- Сара Джонсън</cite>
+                </div>
+                <div class="testimonial-card">
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Отлична услуга и доставката винаги е навреме. Много препоръчвам!"</p>
+                    <cite>- Mike Thompson</cite>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter">
+            <h2>Очаквайте новини</h2>
+            <p>Абонирайте се за нашият бюлетин за специални оферти и актуализации</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Въведете вашият имейл" required>
+                <button type="submit">Абонирайте се</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Свържете се с нас</h3>
+                <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i> info@pizzaparadise.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> 123 Pizza Street, Food City</p>
+            </div>
+            <div class="footer-section">
+                <h3>Отворени часове</h3>
+                <p>Понеделник - Петък: 11:00 - 22:00</p>
+                <p>Събота - Неделя: 12:00 - 23:00</p>
+            </div>
+            <div class="footer-section">
+                <h3>Следвайте ни</h3>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="copyright">&copy; 2024 Pizza Paradise. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

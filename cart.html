@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Kris's Pizza</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-pizza-slice"></i>
+                    Kris's Pizza
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="pizzas.html"><i class="fas fa-pizza-slice"></i> Пици</a></li>
+                    <li><a href="drinks.html"><i class="fas fa-glass-cheers"></i> Напитки</a></li>
+                    <li><a href="about.html"><i class="fas fa-book-open"></i> Нашата история</a></li>
+                    <li class="cart-icon">
+                        <a href="cart.html" class="active">
+                            <i class="fas fa-shopping-cart"></i> Кошница
+                            <span id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="auth-links">
+                        <div id="userMenu" class="user-menu">
+                            <span class="user-name" onclick="toggleUserDropdown(event)">
+                                <i class="fas fa-user"></i>
+                                <span id="userName"></span>
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                            <div class="user-dropdown">
+                                <a href="account.html">
+                                    <i class="fas fa-user-circle"></i>Account Details
+                                </a>
+                                <a href="#" onclick="logout(); return false;">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                        <div id="authButtons">
+                            <a href="login.html" class="login-link">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                            <a href="register.html" class="register-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="cart-section">
+            <h1>Вашата кошница</h1>
+            
+            <div class="cart-container">
+                <div class="cart-items">
+                    <!-- Cart items will be displayed here -->
+                </div>
+                
+                <div class="cart-summary">
+                    <h2>Обобщение на поръчката</h2>
+                    <div class="subtotal">
+                        <span>Междинна сума:</span>
+                        <span id="cart-subtotal">$0.00</span>
+                    </div>
+                    <div class="delivery-fee">
+                        <span>Доставка:</span>
+                        <span>$3.99</span>
+                    </div>
+                    <div class="total">
+                        <span>Обща сума:</span>
+                        <span id="cart-total">$0.00</span>
+                    </div>
+                    
+                    <form id="checkout-form" class="checkout-form">
+                        <div class="form-group">
+                            <label for="name">Име:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Телефон:</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Адрес за доставка:</label>
+                            <textarea id="address" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">Бележки към поръчката:</label>
+                            <textarea id="notes"></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Поръчай сега</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Kris's Pizza. Всички права запазени.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

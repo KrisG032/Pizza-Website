@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Paradise - Our Story</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-pizza-slice"></i>
+                    Pizza Paradise
+                </a>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="pizzas.html"><i class="fas fa-pizza-slice"></i> Пици</a></li>
+                    <li><a href="drinks.html"><i class="fas fa-glass-cheers"></i> Напитки</a></li>
+                    <li><a href="about.html" class="active"><i class="fas fa-book-open"></i> Нашата история</a></li>
+                    <li class="cart-icon">
+                        <a href="cart.html">
+                            <i class="fas fa-shopping-cart"></i> Кошница
+                            <span id="cart-count">0</span>
+                        </a>
+                    </li>
+                    <li class="auth-links">
+                        <div id="userMenu" class="user-menu">
+                            <span class="user-name" onclick="toggleUserDropdown(event)">
+                                <i class="fas fa-user"></i>
+                                <span id="userName"></span>
+                                <i class="fas fa-chevron-down"></i>
+                            </span>
+                            <div class="user-dropdown">
+                                <a href="account.html">
+                                    <i class="fas fa-user-circle"></i>Account Details
+                                </a>
+                                <a href="#" onclick="logout(); return false;">
+                                    <i class="fas fa-sign-out-alt"></i> Logout
+                                </a>
+                            </div>
+                        </div>
+                        <div id="authButtons">
+                            <a href="login.html" class="login-link">
+                                <i class="fas fa-sign-in-alt"></i> Login
+                            </a>
+                            <a href="register.html" class="register-link">
+                                <i class="fas fa-user-plus"></i> Register
+                            </a>
+                        </div>
+                    </li>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="about-main">
+        <section class="story-section">
+            <h1>Нашата история</h1>
+            <div class="story-content">
+                <div class="story-images">
+                    <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Pizza Paradise Story" class="story-image">
+                    <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="Fresh Pizza Making" class="story-image">
+                </div>
+                <div class="story-text">
+                    <h2>Пасион за идеална пица</h2>
+                    <p>Основана в 2010 година, Пица Пархед започна с проста мечта: да създаде идеална пица, която донесе радост на всеки клиент. Нашето пътуване започна в малка кулинарска кухня с семейни рецепти, предавани през поколенията.</p>
+                    
+                    <h2>Нашата философия</h2>
+                    <p>Ние вярваме, че великата пица започва с велики съставки. Ето защо ние използваме само най-добрите, най-свежи съставки от местни доставчици. Всяка пица е изработена с грижи и внимание към детайлите.</p>
+                    
+                    <h2>Комуницата е първо</h2>
+                    <p>Пица Пархед е повече от ресторант - той е част от нашата общност. Ние се гордеем с това, че служим нашите съседи и създаваме уютна атмосфера, където семейства и приятели могат да се събират, за да насладят на великата храна.</p>
+                    
+                    <h2>Поглед напред</h2>
+                    <p>Както продължаваме да растем, нашата застъпническа надежда за качество и удовлетвореност на клиента остава непроменена. Ние постоянно иновации, докато оставаме верни на нашите традиции.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="values-section">
+            <h2>Нашите ценности</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Качество</h3>
+                    <p>Ние никога не компромисираме на качеството на нашите съставки.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Традиция</h3>
+                    <p>Уважаваме традиционните рецепти, докато приветстваме новаторството.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Сървиз</h3>
+                    <p>Ние предоставяме изключителен сервиз на всеки клиент.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Комуницата</h3>
+                    <p>Ние сме активен и позитивен сила в нашата общност.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <div class="cart-total">
+                <p>Total: $<span id="cart-total">0.00</span></p>
+            </div>
+            <button onclick="proceedToCheckout()" class="checkout-btn">Proceed to Checkout</button>
+            <button onclick="closeCart()" class="close-btn">Close</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkout-modal" class="modal">
+        <div class="modal-content">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea id="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="preferences">Preferences/Special Instructions:</label>
+                    <textarea id="preferences"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Place Order</button>
+                <button type="button" onclick="closeCheckout()" class="close-btn">Close</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Pizza Paradise. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
