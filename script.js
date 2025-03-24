@@ -263,7 +263,7 @@ function initializeMenu() {
     }
 
     if (drinksMenuContainer) {
-        displayDrinks();
+        displayDrinks(); // Ensure this function is called
     }
 
     updateCartCount();
@@ -1201,4 +1201,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         };
     }
-}); 
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    initializeMenu(); // Call initializeMenu to display drinks and pizzas
+    // ...existing code...
+});
